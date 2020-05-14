@@ -50,7 +50,7 @@ public class NumberIncrementer extends LinearLayout {
     private NumberChangedListener numberChangedListener;
 
     public NumberIncrementer(Context context) {
-        super(context);
+        super(context,null);
     }
 
     public NumberIncrementer(Context context, @Nullable AttributeSet attrs) {
@@ -113,11 +113,9 @@ public class NumberIncrementer extends LinearLayout {
     public void refresh() {
         this.displayEditText.setText(String.valueOf(this.currentValue));
     }
-
     public void clearFocus() {
         this.displayEditText.clearFocus();
     }
-
     public boolean valueIsAllowed(int value) {
         return (value >= this.minValue && value <= this.maxValue);
     }
@@ -125,7 +123,6 @@ public class NumberIncrementer extends LinearLayout {
     public void setMin(int value) {
         this.minValue = value;
     }
-
     @SuppressWarnings("unused")
     public void setMax(int value) {
         this.maxValue = value;
@@ -142,7 +139,6 @@ public class NumberIncrementer extends LinearLayout {
     public int getMax() {
         return this.maxValue;
     }
-
     public void setValue(int value) {
         if (!this.valueIsAllowed(value)) {
             this.limitExceededListener.limitExceeded(value < this.minValue ? this.minValue : this.maxValue, value);
@@ -151,11 +147,9 @@ public class NumberIncrementer extends LinearLayout {
         this.currentValue = value;
         this.refresh();
     }
-
     public int getValue() {
         return this.currentValue;
     }
-
     public void setLimitExceededListener(LimitExceededListener limitExceededListener) {
         this.limitExceededListener = limitExceededListener;
     }
@@ -163,15 +157,12 @@ public class NumberIncrementer extends LinearLayout {
     public LimitExceededListener getLimitExceededListener() {
         return this.limitExceededListener;
     }
-
     public void setNumberChangedListener(NumberChangedListener numberChangedListener) {
         this.numberChangedListener = numberChangedListener;
     }
-
     public NumberChangedListener getNumberChangedListener() {
         return this.numberChangedListener;
     }
-
     public void setOnEditorActionListener(TextView.OnEditorActionListener onEditorActionListener) {
         this.displayEditText.setOnEditorActionListener(onEditorActionListener);
     }
@@ -187,7 +178,6 @@ public class NumberIncrementer extends LinearLayout {
             this.decrementButton.setEnabled(enabled);
         }
     }
-
     public void setDisplayFocusable(boolean focusable) {
         this.displayEditText.setFocusable(focusable);
 
@@ -196,7 +186,6 @@ public class NumberIncrementer extends LinearLayout {
             this.displayEditText.setFocusableInTouchMode(true);
         }
     }
-
     public void increment() {
         this.changeValueBy(this.unit);
     }
@@ -212,9 +201,6 @@ public class NumberIncrementer extends LinearLayout {
     public void decrement(int unit) {
         this.changeValueBy(-unit);
     }
-
-
-
     private void changeValueBy(int unit) {
         int oldValue = this.getValue();
 
