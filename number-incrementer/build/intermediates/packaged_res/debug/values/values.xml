@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorLightGray">#D8D8D8</color>
+    <color name="colorPrimary">#FD4A08</color>
+    <declare-styleable name="Incrementer">
+        <attr format="integer" name="min"/>
+        <attr format="integer" name="max"/>
+        <attr format="integer" name="value"/>
+        <attr format="integer" name="unit"/>
+        <attr format="reference" name="custom_layout"/>
+        <attr format="boolean" name="focusable"/>
+    </declare-styleable>
+    <declare-styleable name="Themes">
+        <attr format="reference" name="IncrementerLayout"/>
+    </declare-styleable>
+</resources>

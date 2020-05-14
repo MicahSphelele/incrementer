@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+attr? IncrementerLayout
+attr? custom_layout
+attr? focusable
+attr? max
+attr? min
+attr? unit
+attr? value
+color colorLightGray
+color colorPrimary
+drawable bg_white
+drawable border_gray
+id decrement
+id display
+id increment
+layout incrementer_layout
+styleable Incrementer min max value unit custom_layout focusable
+styleable Themes IncrementerLayout
