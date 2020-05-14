@@ -2,8 +2,6 @@ package com.sphe.numberincrementer;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.icu.text.NumberFormat;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
@@ -22,6 +20,7 @@ import com.sphe.numberincrementer.listeners.DefaultNumberChangedListener;
 import com.sphe.numberincrementer.listeners.DefaultOnEditorActionListener;
 import com.sphe.numberincrementer.listeners.DefaultOnFocusChangeListener;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class NumberIncrementer extends LinearLayout {
 
     // default values
@@ -76,10 +75,12 @@ public class NumberIncrementer extends LinearLayout {
         this.mContext = context;
 
         // if current value is greater than the max. value, decrement it to the max. value
-        this.currentValue = this.currentValue > this.maxValue ? maxValue : currentValue;
+        //this.currentValue = this.currentValue > this.maxValue ? maxValue : currentValue;
+        this.currentValue = Math.min(this.currentValue, this.maxValue);
 
         // if current value is less than the min. value, decrement it to the min. value
-        this.currentValue = this.currentValue < this.minValue ? minValue : currentValue;
+        //this.currentValue = this.currentValue < this.minValue ? minValue : currentValue;
+        this.currentValue = Math.max(this.currentValue, this.minValue);
 
         // set layout view
         LayoutInflater.from(this.mContext).inflate(layout, this, true);
@@ -120,27 +121,24 @@ public class NumberIncrementer extends LinearLayout {
     public boolean valueIsAllowed(int value) {
         return (value >= this.minValue && value <= this.maxValue);
     }
-
+    @SuppressWarnings("unused")
     public void setMin(int value) {
         this.minValue = value;
     }
 
+    @SuppressWarnings("unused")
     public void setMax(int value) {
         this.maxValue = value;
     }
-
-    public void setUnit(int unit) {
-        this.unit = unit;
-    }
-
+    @SuppressWarnings("unused")
     public int getUnit() {
         return this.unit;
     }
-
+    @SuppressWarnings("unused")
     public int getMin() {
         return this.minValue;
     }
-
+    @SuppressWarnings("unused")
     public int getMax() {
         return this.maxValue;
     }
@@ -161,7 +159,7 @@ public class NumberIncrementer extends LinearLayout {
     public void setLimitExceededListener(LimitExceededListener limitExceededListener) {
         this.limitExceededListener = limitExceededListener;
     }
-
+    @SuppressWarnings("unused")
     public LimitExceededListener getLimitExceededListener() {
         return this.limitExceededListener;
     }
@@ -177,11 +175,11 @@ public class NumberIncrementer extends LinearLayout {
     public void setOnEditorActionListener(TextView.OnEditorActionListener onEditorActionListener) {
         this.displayEditText.setOnEditorActionListener(onEditorActionListener);
     }
-
+    @SuppressWarnings("unused")
     public void setOnFocusChangeListener(OnFocusChangeListener onFocusChangeListener) {
         this.displayEditText.setOnFocusChangeListener(onFocusChangeListener);
     }
-
+    @SuppressWarnings("unused")
     public void setActionEnabled(IncrementerEnum action, boolean enabled) {
         if (action == IncrementerEnum.INCREMENT) {
             this.incrementButton.setEnabled(enabled);
@@ -202,15 +200,15 @@ public class NumberIncrementer extends LinearLayout {
     public void increment() {
         this.changeValueBy(this.unit);
     }
-
+    @SuppressWarnings("unused")
     public void increment(int unit) {
         this.changeValueBy(unit);
     }
-
+    @SuppressWarnings("unused")
     public void decrement() {
         this.changeValueBy(-this.unit);
     }
-
+    @SuppressWarnings("unused")
     public void decrement(int unit) {
         this.changeValueBy(-unit);
     }

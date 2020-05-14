@@ -10,6 +10,6 @@
     </declare-styleable>
 
     <declare-styleable name="Themes">
-        <attr name="NumberPickerLayout" format="reference"/>
+        <attr name="IncrementerLayout" format="reference"/>
     </declare-styleable>
 </resources>
