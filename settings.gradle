@@ -1,2 +1,3 @@
 rootProject.name='Incrementer'
 include ':app'
+include ':number-incrementer'
